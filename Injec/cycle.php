@@ -11,20 +11,22 @@
 <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
-
+<form name = "cycle" method="post" action="traitement.php">
   <div class="input">
 	<label for="">Durée <span></span></label>
-	<input type="text" name="durée" class="range min-0 max-5" value="2"/>
+	<input type="text" name="duree" class="range min-0 max-5" value="2"/>
+	<input type='hidden' id='duree1' name='duree1' value=''> 
 
 </div>
 <div class="input">
 	<label for="">periode <span></span></label>
-	<input type="text" name="durée" class="range min-0 max-5" value="2"/>
+	<input type="text" name="periode" class="range min-0 max-5" value="2"/>
 
 </div>
 <div class="input">
-<button id="button" class="ui-button ui-corner-all ui-widget">Generer</button>
+<button id="button" class="ui-button ui-corner-all ui-widget">Generer</button> 
 
 </div>
+</form>
 </body>
 </html>
