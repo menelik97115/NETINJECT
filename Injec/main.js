@@ -33,7 +33,10 @@ $('.range').each(function(){
 	/* recuperation de l'element*/	
 	elements.find('.uirange').slider(parametres);
 	elements.find('label span').empty().append(input.val());
-	document.getElementById("duree1").value = input.val();
+	document.getElementById("duree1").value = input.val()
+	document.getElementById("periode1").value = input.val()
+	
+	
 	
 	input.hide();
 	});
