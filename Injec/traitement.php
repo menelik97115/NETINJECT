@@ -19,10 +19,11 @@ header('Location: cycle.php');
 }
 
 /*serveur*/
-$nom = '192.168.56.1';
-$port = '4400';
+$adresse = 'localhost';
+$port = 4400;
+
 //donnés à envoyer
-$start = $duree.$periode;
+$start = $_POST['duree1'].$_POST['periode1'];
 
 /*ouverture socket*/
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -32,7 +33,7 @@ if($socket < 0){
     echo "Creation OK.\n";
 }
  
-if (socket_connect($socket,192.168.56.1,80) < 0){
+if (socket_connect($socket,$adresse,$port) < 0){
         die('FATAL ERROR: socket_connect()');
 } else {
     echo "Connexion OK.\n";
@@ -47,7 +48,7 @@ if(($int = socket_write($socket, $start, strlen($start))) === false){
  
 /*lecture réponse*/
 $reception = '';
-while($buff = socket_read($socket, 2000)){
+while($buff = socket_read($socket, 20)){
    $reception.=$buff;
 }
 echo $reception;
@@ -57,7 +58,7 @@ socket_close($socket);
 ?>
 
 
-?>
+
 
 
 

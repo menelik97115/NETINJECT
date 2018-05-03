@@ -25,11 +25,19 @@
 
 </div>
 <div class="input">
-<button id="button" class="ui-button ui-corner-all ui-widget">Generer</button> 
+<button id="generer" class="ui-button ui-corner-all ui-widget">Generer</button> 
 
 
 </div>
 
 </form>
+<script> 
+ $(document).ready(function(){
+	$('#generer').click(function(){
+		$('form').hide(2000,function(){
+			});
+	});
+});
+</script>
 </body>
 </html>
