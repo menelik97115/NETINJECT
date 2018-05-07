@@ -7,7 +7,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/dot-luv/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
+<link rel="stylesheet" href="../css/feuille.css">
 <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
@@ -24,17 +24,28 @@
 	<input type='hidden' id='periode1' name='periode1' value=''> 
 
 </div>
+
+<div class="input">
+	<label for="">temps a l'etat haut du signal <span></span></label>
+	<input type="text" name="temps" class="range min-0 max-5" value="0">
+	<input type='hidden' id='temps1' name='temps1' value=''> 
+</div>
+
 <div class="input">
 <button id="generer" class="ui-button ui-corner-all ui-widget">Generer</button> 
 
 
 </div>
-
+<div id="progression">
+  
+</div>
 </form>
 <script> 
  $(document).ready(function(){
 	$('#generer').click(function(){
-		$('form').hide(2000,function(){
+		$('form').hide(2000,function(){ 
+		
+
 			});
 	});
 });

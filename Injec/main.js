@@ -1,7 +1,19 @@
 /*appel de la fonction par le symbole $ */
 jQuery(function($){
 
-
+function move() {
+  var elem = document.getElementById("myBar");   
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+    }
+  }
+}
 
 /* selection de tous les input de type range */
 $('.range').each(function(){
@@ -35,8 +47,10 @@ $('.range').each(function(){
 	/* recuperation de l'element*/	
 	elements.find('.uirange').slider(parametres);
 	elements.find('label span').empty().append(input.val());
-	document.getElementById("duree1").value = input.val()
-	document.getElementById("periode1").value = input.val()
+	document.getElementById("duree1").value = input.val();
+	document.getElementById("periode1").value = input.val();
+	document.getElementById("temps1").value = input.val();
+	
 	
 	
 	
