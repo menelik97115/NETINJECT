@@ -42,7 +42,7 @@ $_SESSION['captcha'] = captcha();
 </head>
 <body>
   <div class="ui top fixed menu"> 
-    <div class="navbar-brand" href="#"><img src="images/logo.png" style="height:3em"></div>
+    <div class="navbar-brand" href="#"><img src="images/logo1.png" style="height:6em"></div>
     <div class="right menu"> <!-- partie droite -->
     
     <a class="ui item"><i class="help icon"></i>Support</a>

@@ -2,40 +2,85 @@
 <head>
 <title>traitement du cycle </title>
 <link rel="stylesheet" href="../css/feuille.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/dot-luv/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="../css/feuille.css">
+<link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
+ <link rel="stylesheet" type="text/css" href="dist/style.css">
 <script type="text/javascript" src="main.js"></script>
-<script type="text/javascript">
-function rebour(tps)
-{
-        if (tps>0)
-        {
-                var heure = Math.floor(tps/3600);
-                if(heure >= 24)
-                {
-                        var jour = Math.floor(heure/24);
-                        var moins = 86400*jour;
-                        var heure = heure-(24*jour);
-                }
-                else
-                {
-                        var jour = 0;
-                        var moins = 0;
-                }
-                moins = moins+3600*heure;
-                var minutes = Math.floor((tps-moins)/60);
-                moins = moins + 60*minutes;
-                var secondes = tps-moins;
-                minutes = ((minutes < 10) ? "0" : "") + minutes;
-                secondes = ((secondes < 10) ? "0" : "") + secondes;
-                document.getElementById("compteRebour_affiche").innerHTML = 'Temps restant avant la fin du cycle : '+secondes;
-                var restant = tps-1;
-                setTimeout("rebour("+restant+")", 1000);
+ <script>
+  $( function() {
+    var progressTimer,
+      progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" ),
+      dialogButtons = [{
+        text: "Cancel Download",
+        click: closeDownload
+      }],
+      dialog = $( "#dialog" ).dialog({
+        autoOpen: false,
+        closeOnEscape: false,
+        resizable: false,
+        buttons: dialogButtons,
+        open: function() {
+          progressTimer = setTimeout( progress, 2000 );
+        },
+        beforeClose: function() {
+          downloadButton.button( "option", {
+            disabled: false,
+            label: "Start Generation"
+          });
         }
-        else
-        {
-                document.getElementById("compteRebour_affiche").innerHTML = 'chargement ...';
-        }
-}
+      }),
+      downloadButton = $( "#downloadButton" )
+        .button()
+        .on( "click", function() {
+          $( this ).button( "option", {
+            disabled: true,
+            label: "Downloading..."
+          });
+          dialog.dialog( "open" );
+        });
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( "Progression: " + progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        progressLabel.text( "Terminer !" );
+        dialog.dialog( "option", "buttons", [{
+          text: "Close",
+          click: closeDownload
+        }]);
+        $(".ui-dialog button").last().trigger( "focus" );
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + Math.floor( Math.random() * 3 ) );
+ 
+      if ( val <= 99 ) {
+        progressTimer = setTimeout( progress, 50 );
+      }
+    }
+ 
+    function closeDownload() {
+      clearTimeout( progressTimer );
+      dialog
+        .dialog( "option", "buttons", dialogButtons )
+        .dialog( "close" );
+      progressbar.progressbar( "value", false );
+      progressLabel
+        .text( "Starting download..." );
+      downloadButton.trigger( "focus" );
+    }
+  } );
 </script>
+
 </head>
 <body>
 
@@ -57,13 +102,13 @@ else {
 header('Location: cycle.php');
 }
 // utilisation des cookie pour reucperer la durée
-setcookie(cookie_duree,$duree);
+setcookie($duree);
 /*serveur*/
-$adresse = '192.168.56.1';
-$port = 4400;
+$adresse = '192.168.13.52';
+$port = 15555;
 
 //donnés à envoyer
-$start ="START"." ".$duree." ".$periode." ".$temps;
+$start ="Start"." P".$periode." D".$duree." T".$temps." Fin";
 
 /*ouverture socket*/
 $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -87,22 +132,25 @@ if(($int = socket_write($socket, $start."\n", strlen($start))) === false){
 }
 
  
-/*lecture réponse*/
+/*lecture réponse
 $reception = '';
 while($buff = socket_read($socket, 2000)){
    $reception.=$buff;
 }
 echo $reception;
-/*/lecture réponse*/
+lecture réponse*/
  
 ?>
 <div id="compteRebour_affiche"></div>
 <script type="text/javascript">	
-	rebour($duree);</script>
+</script>
 	
-<div id="myProgress">
-  <div id="myBar"></div>
+
+<div id="dialog" title="Generation du Cycle">
+  <div class="progress-label">Starting...</div>
+  <div id="progressbar"></div>
 </div>
+<button id="downloadButton"class ="ui fluid large teal submit button" style="background-color:#19c0ea; width:120px">Start Generation</button>
 
 <?php
 socket_close($socket);

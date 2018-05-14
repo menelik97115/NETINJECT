@@ -12,12 +12,10 @@
 		<img src="images/mini_logo.png">
 	  </div>
 	  <a href="e1_index.php" class="ui item"><i class="home icon"></i>Accueil</a>
-	  <div class="navbar-brand" href="#"><img src="images/logo.png" style="height:4em"></div>
+	  <div class="navbar-brand" href="#"><img src="images/logo1.png"  style="height:4em"></div>
 	  <div class="right menu"> <!-- partie droite -->
-		<div class="ui item">
-			<p>Connecté en tant que <a href="#"><?php echo $_SESSION['utilisateur']['pseudo']; ?></p>
-		</div>
-		<a class="ui item"><i class="comments outline icon"></i>Forums</a>
+		
+		
 		<a class="ui item"><i class="help icon"></i>Support</a>
 		<a class="ui item"><i class="sign out icon"></i>Deconnexion</a>
 	  </div>	  

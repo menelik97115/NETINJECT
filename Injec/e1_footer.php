@@ -19,7 +19,7 @@
 		  </div>
 		</div>
 		<div class="three wide column">
-		  <h4 class="ui inverted header">Aide de Delta Market</h4>
+		  <h4 class="ui inverted header">Aide</h4>
 		  <div class="ui inverted link list">
 			<a href="#" class="item">Support & FAQ</a>
 			<a href="#" class="item">Version History</a>

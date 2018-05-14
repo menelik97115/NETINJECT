@@ -1,20 +1,6 @@
 /*appel de la fonction par le symbole $ */
 jQuery(function($){
 
-function move() {
-  var elem = document.getElementById("myBar");   
-  var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++; 
-      elem.style.width = width + '%'; 
-    }
-  }
-}
-
 /* selection de tous les input de type range */
 $('.range').each(function(){
 	var classe = $(this).attr('class');

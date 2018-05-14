@@ -22,10 +22,10 @@ include("e1_header.php");
 			<?php include("e1_menu_produits.php"); // MENU DES PRODUITS ?>
 		</div>
 		<div class="eleven wide column">
-			<h1 class="ui header">Welcom to Delta Market !</h1>
+			<h1 class="ui header">Welcom to NETINJECT !</h1>
 			<hr/>
-			<p>Bienvenue sur Delta Market ! Profitez ici d'un nettoyage efficace
-			et d'une sécurité très importante.Tout le monde trouvera son bonheur sur DeltaMarket</p>
+			<p>Bienvenue sur NETINJECT ! Profitez ici d'un nettoyage efficace
+			et d'une sécurité très importante.Tout le monde trouvera son bonheur sur NETINJECT</p>
 			<div class="ui centered grid">
 				<div class="fifteen wide column">
 					<h3 class="ui header">New</h3>
