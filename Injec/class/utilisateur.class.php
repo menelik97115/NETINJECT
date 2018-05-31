@@ -1,11 +1,12 @@
 <?php
+
 function connexion_utilisateur($pseudo, $mdp, $captcha, $sessionCaptcha)
 {
 	global $bdd; // Objet PDO - Base de donnée
 
 	if($captcha == $sessionCaptcha)
 	{
-		$req = $bdd->prepare('SELECT * FROM utilisateurs WHERE pseudo = pseudo AND mdp = mdp');
+		$req = $bdd->prepare("SELECT * FROM utilisateurs WHERE pseudo ='".$pseudo."' AND mdp ='".$mdp."'");
 		$req->execute(array(
 				'pseudo'=> $pseudo,
 				'mdp' => $mdp));
@@ -17,7 +18,7 @@ function connexion_utilisateur($pseudo, $mdp, $captcha, $sessionCaptcha)
 		{
 			$donnees = $req->fetch();
 			// Mise à jour du timestamp de dernière connexion
-			$req = $bdd->prepare('UPDATE utilisateurs SET date_connexion = :date WHERE ID = id');
+			$req = $bdd->prepare("UPDATE utilisateurs SET date_connexion ='".$date."' WHERE ID ='".id."'");
 			$req->execute(array('date'=> time(),
 								'id'=> $donnees['ID']));
 		}

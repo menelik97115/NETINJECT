@@ -12,4 +12,4 @@ if(empty($_SESSION['utilisateur']) OR !isset($_SESSION['utilisateur']))
 
 /* Système de connexion à la BDD
 Utilisation d'un objet PDO  */
-$bdd = new PDO('mysql:host=localhost;dbname=Injecteur_Bdd;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=injecteur_bdd;charset=utf8', 'root', '');

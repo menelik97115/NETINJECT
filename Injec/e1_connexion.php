@@ -3,7 +3,7 @@ session_start();
 /* Système de connexion à la BDD
 Utilisation d'un objet PDO  */
 
-$bdd = new PDO('mysql:host=localhost;dbname=Injecteur_Bdd;charset=utf8', 'root','');
+$bdd = new PDO('mysql:host=localhost;dbname=injecteur_bdd;charset=utf8', 'root','');
 include("class/utilisateur.class.php"); // Classe de l'utilisateur
 
 if(isset($_POST['pseudo']) && isset($_POST['mdp']) && isset($_POST['captcha']) && isset($_SESSION['captcha']))
@@ -22,7 +22,7 @@ if(isset($_POST['pseudo']) && isset($_POST['mdp']) && isset($_POST['captcha']) &
     else
     {
       $_SESSION['utilisateur'] = $utilisateur;
-      header('location:e1_index.php');
+      header('location:cycle.php');
       break;
     }
   }
